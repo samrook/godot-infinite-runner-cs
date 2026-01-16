@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://drk6yioqppne0"]
+
+[ext_resource type="Texture2D" uid="uid://1vyqvymh0fet" path="res://Assets/Tiles/tile_0068.png" id="1_jdujf"]
+[ext_resource type="Script" uid="uid://bnmh7mauh3mpt" path="res://_Scripts/Obstacle.cs" id="1_ts6as"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ts6as"]
+size = Vector2(18, 9)
+
+[node name="Obstacle" type="Area2D"]
+script = ExtResource("1_ts6as")
+
+[node name="SpikeSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_jdujf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_ts6as")
