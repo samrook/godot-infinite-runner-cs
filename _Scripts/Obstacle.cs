@@ -15,8 +15,6 @@ public partial class Obstacle : Area2D
 		// (We don't want the Floor triggering this if we accidentally placed it too low)
 		if (body is Player)
 		{
-			GD.Print("GAME OVER!");
-			
 			// For now, let's just reload the scene instantly to try again
 			// OLD (Crashy): GetTree().ReloadCurrentScene();
 		

@@ -11,16 +11,11 @@ public partial class FloorSegment : StaticBody2D
 	[Export]
 	public PackedScene ObstacleScene { get; set; }
 	
-	// New Property: Default to FALSE (Dangerous), but can be set to TRUE (Safe)
-	public bool IsSafe { get; set; } = false;
-	
-	public override void _Ready()
+	// We don't need "IsSafe" anymore, we will just use a direct command
+	public void Initialize(bool spawnSpike)
 	{
-		GD.Print(IsSafe ? "Segment Safe" : "Segment Not Safe");
-		
-		// Simple Random Logic: 50% chance to spawn a spike
-		// GD.Randf() returns a float between 0.0 and 1.0
-		if (!IsSafe && ObstacleScene != null && GD.Randf() > 0.5f)
+		// Only spawn if Main told us to AND we have the scene assigned
+		if (spawnSpike && ObstacleScene != null)
 		{
 			SpawnObstacle();
 		}
@@ -51,7 +46,5 @@ public partial class FloorSegment : StaticBody2D
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{
 		QueueFree(); // Delete this object from memory
-		
-		GD.Print("OBject deleted");
 	}
 }

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bxc3rb531ejin" path="res://Assets/Tiles/tile_0122.png" id="4_flxah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybuu3"]
-size = Vector2(162, 14)
+size = Vector2(90, 14)
 
 [node name="FloorSegment" type="StaticBody2D"]
 script = ExtResource("1_ybuu3")
@@ -31,46 +31,15 @@ texture = ExtResource("1_7omtb")
 position = Vector2(72, 0)
 texture = ExtResource("1_7omtb")
 
-[node name="Tile0007" type="Sprite2D" parent="."]
-position = Vector2(-18, 0)
-texture = ExtResource("1_7omtb")
-
-[node name="Tile0008" type="Sprite2D" parent="."]
-position = Vector2(-36, 0)
-texture = ExtResource("1_7omtb")
-
-[node name="Tile0009" type="Sprite2D" parent="."]
-position = Vector2(-54, 0)
-texture = ExtResource("1_7omtb")
-
-[node name="Tile0010" type="Sprite2D" parent="."]
-position = Vector2(-72, 0)
-texture = ExtResource("1_7omtb")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36, 0)
 shape = SubResource("RectangleShape2D_ybuu3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-81, -7, 162, 14)
+rect = Rect2(-9, -7, 90, 14)
 
 [node name="EndMarker" type="Marker2D" parent="."]
 position = Vector2(81, 0)
-
-[node name="Tile0122" type="Sprite2D" parent="."]
-position = Vector2(-72, 16)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0123" type="Sprite2D" parent="."]
-position = Vector2(-54, 16)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0124" type="Sprite2D" parent="."]
-position = Vector2(-36, 16)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0125" type="Sprite2D" parent="."]
-position = Vector2(-18, 16)
-texture = ExtResource("4_flxah")
 
 [node name="Tile0126" type="Sprite2D" parent="."]
 position = Vector2(0, 16)
@@ -92,22 +61,6 @@ texture = ExtResource("4_flxah")
 position = Vector2(72, 16)
 texture = ExtResource("4_flxah")
 
-[node name="Tile0131" type="Sprite2D" parent="."]
-position = Vector2(-72, 34)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0132" type="Sprite2D" parent="."]
-position = Vector2(-54, 34)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0133" type="Sprite2D" parent="."]
-position = Vector2(-36, 34)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0134" type="Sprite2D" parent="."]
-position = Vector2(-18, 34)
-texture = ExtResource("4_flxah")
-
 [node name="Tile0135" type="Sprite2D" parent="."]
 position = Vector2(0, 34)
 texture = ExtResource("4_flxah")
@@ -126,22 +79,6 @@ texture = ExtResource("4_flxah")
 
 [node name="Tile0139" type="Sprite2D" parent="."]
 position = Vector2(72, 34)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0140" type="Sprite2D" parent="."]
-position = Vector2(-72, 52)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0141" type="Sprite2D" parent="."]
-position = Vector2(-54, 52)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0142" type="Sprite2D" parent="."]
-position = Vector2(-36, 52)
-texture = ExtResource("4_flxah")
-
-[node name="Tile0143" type="Sprite2D" parent="."]
-position = Vector2(-18, 52)
 texture = ExtResource("4_flxah")
 
 [node name="Tile0144" type="Sprite2D" parent="."]

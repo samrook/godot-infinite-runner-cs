@@ -13,6 +13,9 @@ public partial class Main : Node2D
 	private float _score = 0.0f;
 	private Label _scoreLabel;
 	
+	// NEW: Track space between spikes
+	private int _chunksSinceLastSpike = 0;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -50,31 +53,58 @@ public partial class Main : Node2D
 		_scoreLabel.Text = $"Score: {(int)_score}";
 	}
 	
-	private void SpawnFloor(Vector2? startPos = null, bool isSafe = false)
+	private void SpawnFloor(Vector2? startPos = null, bool forceSafe = false)
 	{
-		// Create the new floor
 		FloorSegment newFloor = FloorScene.Instantiate<FloorSegment>();
 		
-		// Set the safe flag BEFORE adding it to the tree (so _Ready sees it)
-		newFloor.IsSafe = isSafe;
-	
-		// Figure out where to put it
+		// 1. Position Logic (Same as before)
 		if (startPos != null)
 		{
-			// This is the very first floor (Manual position)
 			newFloor.Position = startPos.Value;
 		}
 		else
 		{
-			// Attach to the end of the previous floor
 			Marker2D prevMarker = _lastFloor.GetNode<Marker2D>("EndMarker");
 			newFloor.Position = prevMarker.GlobalPosition;
 		}
 
-		// Add it to the game
 		AddChild(newFloor);
 
-		// Update our tracker
+		// 2. OBSTACLE LOGIC
+		bool spawnSpike = false;
+
+		if (forceSafe)  
+		{
+			spawnSpike = false;
+			_chunksSinceLastSpike++; // Count this as a safe chunk
+		}
+		else
+		{
+			// RULE: If we had a spike recently (less than 2 chunks ago), FORCE SAFE.
+			if (_chunksSinceLastSpike < 0) 
+			{
+				spawnSpike = false;
+				_chunksSinceLastSpike++;
+			}
+			else
+			{
+				// We are allowed to spawn. Roll the dice.
+				if (GD.Randf() > 0.5f) 
+				{
+					spawnSpike = true;
+					_chunksSinceLastSpike = 0; // Reset counter!
+				}
+				else
+				{
+					spawnSpike = false;
+					_chunksSinceLastSpike++;
+				}
+			}
+		}
+
+		// 3. Command the floor
+		newFloor.Initialize(spawnSpike);
+
 		_lastFloor = newFloor;
 	}
 }
