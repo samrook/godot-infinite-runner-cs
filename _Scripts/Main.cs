@@ -65,7 +65,7 @@ public partial class Main : Node2D
 		else
 		{
 			Marker2D prevMarker = _lastFloor.GetNode<Marker2D>("EndMarker");
-			newFloor.Position = prevMarker.GlobalPosition;
+			newFloor.Position = prevMarker.GlobalPosition - new Vector2(12, 0);
 		}
 
 		AddChild(newFloor);
@@ -81,7 +81,7 @@ public partial class Main : Node2D
 		else
 		{
 			// RULE: If we had a spike recently (less than 2 chunks ago), FORCE SAFE.
-			if (_chunksSinceLastSpike < 0) 
+			if (_chunksSinceLastSpike < 1) 
 			{
 				spawnSpike = false;
 				_chunksSinceLastSpike++;
